@@ -32,7 +32,6 @@ public class MediaSessionService extends Service {
 
     private MediaSessionCompat mediaSession;
     private PlaybackStateCompat.Builder playbackStateBuilder;
-    private MediaMetadataCompat.Builder mediaMetadataBuilder;
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
     private MediaStyle notificationStyle;
@@ -91,7 +90,7 @@ public class MediaSessionService extends Service {
                 .setState(PlaybackStateCompat.STATE_PAUSED, position, playbackSpeed);
         mediaSession.setPlaybackState(playbackStateBuilder.build());
 
-        mediaMetadataBuilder = new MediaMetadataCompat.Builder()
+        MediaMetadataCompat.Builder mediaMetadataBuilder = new MediaMetadataCompat.Builder()
                 .putLong(MediaMetadataCompat.METADATA_KEY_DURATION, duration);
         mediaSession.setMetadata(mediaMetadataBuilder.build());
 
@@ -275,8 +274,8 @@ public class MediaSessionService extends Service {
             playbackStateUpdate = false;
         }
 
-        if (mediaMetadataUpdate && mediaMetadataBuilder != null) {
-            mediaMetadataBuilder
+        if (mediaMetadataUpdate) {
+            MediaMetadataCompat.Builder mediaMetadataBuilder = new MediaMetadataCompat.Builder()
                     .putString(MediaMetadataCompat.METADATA_KEY_TITLE, title)
                     .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, artist)
                     .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, album)
