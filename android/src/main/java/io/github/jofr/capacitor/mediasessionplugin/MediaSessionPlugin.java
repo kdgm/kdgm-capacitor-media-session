@@ -137,12 +137,15 @@ public class MediaSessionPlugin extends Plugin {
         album = call.getString("album", album);
 
         final JSArray artworkArray = call.getArray("artwork");
-        final List<JSONObject> artworkList = artworkArray.toList();
-        for (JSONObject artwork : artworkList) {
-            String src = artwork.getString("src");
-            if (src != null) {
-                this.artwork = urlToBitmap(src);
-            }
+        if (artworkArray != null) {
+           final List<JSONObject> artworkList = artworkArray.toList();
+
+           for (JSONObject artwork : artworkList) {
+               String src = artwork.getString("src");
+               if (src != null) {
+                   this.artwork = urlToBitmap(src);
+               }
+           }
         }
 
         if (service != null) { updateServiceMetadata(); };
