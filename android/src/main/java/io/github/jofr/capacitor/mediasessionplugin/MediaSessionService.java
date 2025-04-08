@@ -274,13 +274,14 @@ public class MediaSessionService extends Service {
             playbackStateUpdate = false;
         }
 
-        if (mediaMetadataUpdate) {
+        if (mediaMetadataUpdate && mediaSession != null) {
             MediaMetadataCompat.Builder mediaMetadataBuilder = new MediaMetadataCompat.Builder()
                     .putString(MediaMetadataCompat.METADATA_KEY_TITLE, title)
                     .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, artist)
                     .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, album)
                     .putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, artwork)
                     .putLong(MediaMetadataCompat.METADATA_KEY_DURATION, duration);
+
             mediaSession.setMetadata(mediaMetadataBuilder.build());
             mediaMetadataUpdate = false;
         }
