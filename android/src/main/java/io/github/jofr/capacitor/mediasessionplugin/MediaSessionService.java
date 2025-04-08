@@ -279,7 +279,7 @@ public class MediaSessionService extends Service {
                     .putString(MediaMetadataCompat.METADATA_KEY_TITLE, title)
                     .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, artist)
                     .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, album)
-                    .putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, artwork)
+//                    .putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, artwork)
                     .putLong(MediaMetadataCompat.METADATA_KEY_DURATION, duration);
 
             mediaSession.setMetadata(mediaMetadataBuilder.build());
